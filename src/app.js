@@ -11,7 +11,7 @@ const tasks = [
 let nextId = 4;
 
 function calculateTotal(items) {
-  return items.reduce((total, item) => total + item.price + item.quantity, 0);
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
 }
 app.use(express.json());
 
