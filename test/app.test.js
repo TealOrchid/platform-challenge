@@ -92,3 +92,28 @@ test("PATCH /tasks/:id returns 400 for a non-numeric id", async () => {
 
   assert.equal(res.status, 400);
 });
+
+test("DELETE /tasks/:id deletes an existing task", async () => {
+  const task = await createTask("Delete me");
+  const res = await request(app).delete(`/tasks/${task.id}`);
+
+  assert.equal(res.status, 204);
+
+  const getRes = await request(app).get("/tasks");
+  assert.equal(getRes.status, 200);
+  assert.equal(getRes.body.some((item) => item.id === task.id), false);
+});
+
+test("DELETE /tasks/:id returns 404 for an unknown task", async () => {
+  const res = await request(app).delete("/tasks/99999");
+
+  assert.equal(res.status, 404);
+});
+
+test("DELETE /tasks/:id returns 404 for a non-numeric id", async () => {
+  const res = await request(app).delete("/tasks/abc");
+
+  assert.equal(res.status, 404);
+});
+
+
