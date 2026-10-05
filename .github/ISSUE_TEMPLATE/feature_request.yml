@@ -1,0 +1,72 @@
+name: Feature Request
+description: Propose a new feature or enhancement for the application
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out every required field. Features without clear acceptance criteria
+        will be sent back for revision.
+
+  - type: textarea
+    id: user_story
+    attributes:
+      label: User Story
+      description: Describe the feature from the user's perspective.
+      placeholder: "As a user, I want to retrieve all tasks so that I can see the current work items."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: A checklist of conditions that must be met for this feature to be complete.
+      value: |
+        - [ ] Endpoint returns the expected HTTP status code
+        - [ ] Endpoint returns the expected payload shape
+        - [ ] Automated tests cover the happy path
+        - [ ] Automated tests cover error cases
+        - [ ] CI passes on the feature branch
+        - [ ] Merged via a reviewed and approved Pull Request
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: Optional technical approach, endpoints, or data shapes.
+      placeholder: |
+        GET /tasks
+        Response: 200 OK, JSON array of { id, title, completed }
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative approaches you have considered.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Mockups, diagrams, references, or related issues.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission Checklist
+      options:
+        - label: I have searched existing issues to make sure this is not a duplicate.
+          required: true
+        - label: This feature has clear, testable acceptance criteria.
+          required: true

@@ -1,0 +1,124 @@
+name: Bug Report
+description: Report a defect, failing test, or unexpected behavior in the application
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill out every required field.
+        Incomplete reports will be sent back for revision.
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: Problem Description
+      description: A clear and concise description of what the defect is.
+      placeholder: "The GET /tasks endpoint returns an object instead of an array."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Exact steps to trigger the bug, numbered.
+      placeholder: |
+        1. Run `npm install`
+        2. Run `npm test`
+        3. Observe the failing test in the console
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current Behavior
+      description: What actually happens. Paste error messages, stack traces, or logs.
+      placeholder: |
+        The test `calculates the total for several items` fails with:
+        AssertionError: Expected values to be strictly equal: 20 !== 35
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead.
+      placeholder: "All tests should pass. `npm test` should exit with code 0."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: A checklist that must be true for this bug to be considered fixed.
+      value: |
+        - [ ] `npm test` passes with 0 failures
+        - [ ] The failing test is fixed by changing the source, not the test
+        - [ ] No tests are deleted, skipped, or weakened
+        - [ ] CI passes on the fix branch
+        - [ ] Fix is merged via a reviewed and approved Pull Request
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is the impact of this bug?
+      options:
+        - "Low — cosmetic or minor"
+        - "Medium — degrades functionality"
+        - "High — blocks development or CI"
+        - "Critical — breaks production"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      placeholder: "Fedora Linux 44"
+    validations:
+      required: true
+
+  - type: input
+    id: node_version
+    attributes:
+      label: Node.js Version
+      description: Output of `node --version`
+      placeholder: "v20.11.1"
+    validations:
+      required: true
+
+  - type: input
+    id: npm_version
+    attributes:
+      label: npm Version
+      description: Output of `npm --version`
+      placeholder: "10.2.4"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Screenshots, links, or anything else that helps.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission Checklist
+      options:
+        - label: I have searched existing issues to make sure this is not a duplicate.
+          required: true
+        - label: I have run `npm install && npm test` locally and reproduced the bug.
+          required: true

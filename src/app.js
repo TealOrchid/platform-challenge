@@ -1,12 +1,11 @@
-﻿const express = require("express");
-
+const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-
 const tasks = [
-  { id: 1, title: "Initial task", completed: false }
+  { id: 1, title: "Set up project repository", completed: true },
+  { id: 2, title: "Configure CI pipeline", completed: true },
+  { id: 3, title: "Implement task management API", completed: false }
 ];
 
 function calculateTotal(items) {
@@ -48,6 +47,9 @@ app.patch("/tasks/:id", (req, res) => {
 
   task.completed = completed;
   return res.status(200).json(task);
+  
+app.get("/tasks", (_req, res) => {
+  res.status(200).json(tasks);
 });
 
 if (require.main === module) {

@@ -1,6 +1,14 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { calculateTotal } = require("../src/app");
+const request = require("supertest");
+const { app, calculateTotal } = require("../src/app");
+
+test("GET /tasks returns the task list", async () => {
+  const response = await request(app).get("/tasks");
+
+  assert.equal(response.status, 200);
+  assert.ok(Array.isArray(response.body));
+});
 
 test("calculates the total for several items", () => {
   const items = [

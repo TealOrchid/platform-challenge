@@ -1,0 +1,48 @@
+name: Chore / Task
+description: A maintenance task, CI/CD change, infrastructure change, or documentation update
+title: "[Chore]: "
+labels: ["chore", "triage"]
+assignees: []
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why?
+      placeholder: "Add a Terraform validation workflow that runs on PRs touching terraform/."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - "CI/CD"
+        - "Docker"
+        - "Terraform"
+        - "Documentation"
+        - "Dependencies"
+        - "Repository configuration"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Change is implemented on a `chore/...` branch
+        - [ ] Change is validated locally
+        - [ ] CI passes
+        - [ ] Merged via a reviewed and approved Pull Request
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+    validations:
+      required: false
