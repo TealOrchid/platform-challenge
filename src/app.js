@@ -52,7 +52,7 @@ app.patch("/tasks/:id", (req, res) => {
 
 if (require.main === module) {
   app.listen(port, () => {
-    console.log(Application listening on port ${port});
+    console.log("Application listening on port " + port);
   });
 }
 
